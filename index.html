@@ -1,118 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🧠 My Writeups</title>
-    
-    <link rel="stylesheet" href="site-lib/styles/obsidian.css">
-    <link rel="stylesheet" href="site-lib/styles/theme.css">
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My write-ups 📋🧩</title>
 
-    <style>
-      body {
-        margin: 0;
-        padding: 3rem 1rem;
-        background-color: var(--background-primary, #1e1e1e);
-        display: flex;
-        justify-content: center;
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #0e1116;
+      --text-color: #e8e8e8;
+      --muted-color: #b0b0b0;
+      --accent: #00ff88;
+
+      --easy: #00ff73;
+      --medium: #ffea4d;
+      --hard: #ff4d4d;
+      --insane: #b96bff;
+
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --border-color: rgba(255, 255, 255, 0.1);
+
+      --font-body: 'Poppins', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      text-align: center;
+      padding: 2rem 1rem 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1.page-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+      margin-bottom: 1rem;
+    }
+
+    hr {
+      width: 60%;
+      border: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--accent), transparent);
+      margin-bottom: 1.5rem;
+    }
+
+    p.intro {
+      max-width: 720px;
+      color: var(--muted-color);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+
+    section {
+      width: 100%;
+      max-width: 700px;
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      border-radius: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 0 10px rgba(255,255,255,0.02);
+      backdrop-filter: blur(6px);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 15px rgba(0,255,136,0.08);
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    h2.easy { color: var(--easy); text-shadow: 0 0 8px var(--easy); }
+    h2.medium { color: var(--medium); text-shadow: 0 0 8px var(--medium); }
+    h2.hard { color: var(--hard); text-shadow: 0 0 8px var(--hard); }
+    h2.insane { color: var(--insane); text-shadow: 0 0 8px var(--insane); }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin: 0.5rem 0;
+      font-size: 1.05rem;
+    }
+
+    li a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(0,255,136,0.4);
+      font-weight: 500;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    li a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px var(--accent);
+    }
+
+    footer {
+      width: 100%;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 0;
+      margin-top: auto;
+      font-size: 0.95rem;
+      color: var(--muted-color);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .footer-links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 1.05rem;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      transform: translateY(-3px);
+      text-shadow: 0 0 10px var(--accent);
+    }
+
+    .footer-links svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 1rem;
       }
 
-      .container {
-        max-width: 800px;
-        width: 100%;
-        padding: 2rem;
-        border-radius: 12px;
-        background-color: var(--background-secondary, #2b2b2b);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        text-align: center;
+      h1.page-title {
+        font-size: 2rem;
       }
 
-      h1 {
-        margin-bottom: 1rem;
+      p.intro {
+        font-size: 1rem;
       }
 
-      p.description {
-        margin-bottom: 2rem;
-        font-size: 1.1rem;
-        color: var(--text-normal, #ccc);
-      }
-
-      h2 {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        border-bottom: 1px solid currentColor;
-        padding-bottom: 0.3rem;
-      }
-
-      /* Colores según dificultad */
-      h2.easy, .easy a { color: #4CAF50; }
-      h2.medium, .medium a { color: #FF9800; }
-      h2.hard, .hard a { color: #F44336; }
-      h2.insane, .insane a { color: #9C27B0; }
-
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0 auto;
-        display: flex;
+      .footer-links {
         flex-direction: column;
-        align-items: center;
+        gap: 1rem;
       }
+    }
+  </style>
+</head>
 
-      ul li {
-        margin: 0.5rem 0;
-      }
+<body>
+  <h1 class="page-title">My write-ups 📋🧩</h1>
+  <hr>
+  <p class="intro">
+    Welcome to my collection of <strong>writeups</strong> from various <strong>CTF platforms and cybersecurity challenges</strong>.<br>
+    Each post includes detailed explanations of enumeration, exploitation, privilege escalation, and more — all for learning and ethical hacking purposes.
+  </p>
 
-      ul li a {
-        text-decoration: none;
-        font-weight: 500;
-      }
+  <section>
+    <h2 class="easy">Easy Machines</h2>
+    <ul>
+      <li><a href="markdown-writeups/machine-squashed.html" target="_self">Machine Squashed</a> - HTB | Linux | (OSCP)</li>
+    </ul>
+  </section>
 
-      ul li a:hover {
-        text-decoration: underline;
-      }
+  <section>
+    <h2 class="medium">Medium Machines</h2>
+    <p>No machines added yet</p>
+  </section>
 
-      footer {
-        margin-top: 3rem;
-        font-size: 0.9rem;
-        color: var(--text-faint, #888);
-      }
-    </style>
+  <section>
+    <h2 class="hard">Hard Machines</h2>
+    <p>No machines added yet</p>
+  </section>
 
-  </head>
+  <section>
+    <h2 class="insane">Insane Machines</h2>
+    <p>No machines added yet</p>
+  </section>
 
-  <body>
-    <div class="container">
-      <h1>🧠 My Writeups</h1>
-
-      <p class="description">
-        Welcome to my collection of <strong>writeups</strong> from various <strong>CTF platforms and cybersecurity challenges</strong>.  
-        Each post includes detailed explanations of enumeration, exploitation, privilege escalation, and more, all for learning and ethical hacking purposes.
-      </p>
-
-      <h2 class="easy">Easy</h2>
-      <ul class="easy">
-        <li><a href="https://kmn9.github.io/theopendoor/machine-squashed.html">Squashed - HTB | Linux</a></li>
-      </ul>
-
-      <h2 class="medium">Medium</h2>
-      <ul class="medium">
-        <li><em>No medium machines added yet.</em></li>
-      </ul>
-
-      <h2 class="hard">Hard</h2>
-      <ul class="hard">
-        <li><em>No hard machines added yet.</em></li>
-      </ul>
-
-      <h2 class="insane">Insane</h2>
-      <ul class="insane">
-        <li><em>No insane machines added yet.</em></li>
-      </ul>
-
-      <footer>
-        <p>© 2025 Jaime Carmena Gómez (alias: kmn9) — Ethical hacking and CTF writeups</p>
-      </footer>
+  <footer>
+    <p>Connect with me 🌐</p>
+    <div class="footer-links">
+      <a href="https://app.hackthebox.com/profile/2031207" target="_blank" rel="noopener" title="Hack The Box">
+        <!-- HTB ICON -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 7l9-5 9 5v10l-9 5-9-5V7zm9 10l6-3.3V8.7L12 5.4 6 8.7v4L12 17z"/></svg>
+        Hack The Box
+      </a>
+      <a href="https://www.linkedin.com/in/jaime-carmena-gómez-13622723a/" target="_blank" rel="noopener" title="LinkedIn">
+        <!-- LINKEDIN ICON -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14C2.2 0 0 2.2 0 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5V5c0-2.8-2.2-5-5-5zM7.1 20H4V9h3.1v11zM5.6 7.6c-1 0-1.7-.8-1.7-1.7 0-1 .8-1.7 1.7-1.7s1.7.8 1.7 1.7-.8 1.7-1.7 1.7zM20 20h-3.1v-5.6c0-1.3-.5-2.2-1.7-2.2s-2 .9-2 2.3V20h-3.1V9h3v1.5c.4-.6 1.4-1.5 3.1-1.5 2.2 0 3.8 1.4 3.8 4.4V20z"/></svg>
+        LinkedIn
+      </a>
     </div>
-  </body>
+  </footer>
+</body>
 </html>
