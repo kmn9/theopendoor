@@ -100,7 +100,7 @@
     h2.hard { color: var(--hard); text-shadow: 0 0 8px var(--hard); }
     h2.insane { color: var(--insane); text-shadow: 0 0 8px var(--insane); }
 
-    /* --- CENTRADO DE LAS MÁQUINAS --- */
+    /* --- CENTRADO DE LAS MÁQUINAS + TOOLTIP --- */
     ul {
       list-style: none;
       padding: 0;
@@ -113,13 +113,20 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      margin: 0.75rem 0;
+      margin: 1rem 0;
       font-size: 1.05rem;
       line-height: 1.6;
+      position: relative;
+    }
+
+    .machine-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
 
     li a {
-      display: inline-block;
       color: var(--accent);
       text-decoration: none;
       border-bottom: 1px dashed rgba(0,255,136,0.4);
@@ -130,6 +137,66 @@
     li a:hover {
       color: #fff;
       text-shadow: 0 0 10px var(--accent);
+    }
+
+    /* --- BOTÓN DE INFORMACIÓN --- */
+    .info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .info-icon:hover {
+      background-color: var(--accent);
+      color: var(--bg-color);
+    }
+
+    /* --- TOOLTIP --- */
+    .tooltip {
+      visibility: hidden;
+      opacity: 0;
+      width: max-content;
+      max-width: 250px;
+      background-color: rgba(0,0,0,0.9);
+      color: #fff;
+      text-align: center;
+      border-radius: 8px;
+      padding: 0.6rem 0.8rem;
+      position: absolute;
+      z-index: 1;
+      bottom: 130%;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: opacity 0.3s;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      box-shadow: 0 0 10px rgba(0,255,136,0.3);
+    }
+
+    .tooltip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: rgba(0,0,0,0.9) transparent transparent transparent;
+    }
+
+    .info-icon:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
     }
 
     footer {
@@ -204,8 +271,23 @@
   <section>
     <h2 class="easy">Easy Machines</h2>
     <ul>
-      <li><a href="https://kmn9.github.io/theopendoor/machine-squashed.html" target="_self">Machine Squashed</a> - HTB | Linux | (OSCP)</li>
-      <li><a href="https://kmn9.github.io/theopendoor/machine-teacher.html" target="_self">Machine Teacher</a> - HTB | Linux | (OSCP | eWPT | OSWE | eWPTX)</li>
+      <li>
+        <div class="machine-title">
+          <a href="https://kmn9.github.io/theopendoor/machine-squashed.html" target="_self">Machine Squashed</a>
+          <div class="info-icon">!
+            <div class="tooltip">HTB - Linux | (OSCP)</div>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <div class="machine-title">
+          <a href="https://kmn9.github.io/theopendoor/machine-teacher.html" target="_self">Machine Teacher</a>
+          <div class="info-icon">!
+            <div class="tooltip">HTB - Linux | (OSCP | eWPT | OSWE | eWPTX)</div>
+          </div>
+        </div>
+      </li>
     </ul>
   </section>
 
@@ -228,12 +310,10 @@
     <p>Connect with me 🌐</p>
     <div class="footer-links">
       <a href="https://app.hackthebox.com/profile/2031207" target="_blank" rel="noopener" title="Hack The Box">
-        <!-- HTB ICON -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 7l9-5 9 5v10l-9 5-9-5V7zm9 10l6-3.3V8.7L12 5.4 6 8.7v4L12 17z"/></svg>
         Hack The Box
       </a>
       <a href="https://www.linkedin.com/in/jaime-carmena-gómez-13622723a/" target="_blank" rel="noopener" title="LinkedIn">
-        <!-- LINKEDIN ICON -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14C2.2 0 0 2.2 0 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5V5c0-2.8-2.2-5-5-5zM7.1 20H4V9h3.1v11zM5.6 7.6c-1 0-1.7-.8-1.7-1.7 0-1 .8-1.7 1.7-1.7s1.7.8 1.7 1.7-.8 1.7-1.7 1.7zM20 20h-3.1v-5.6c0-1.3-.5-2.2-1.7-2.2s-2 .9-2 2.3V20h-3.1V9h3v1.5c.4-.6 1.4-1.5 3.1-1.5 2.2 0 3.8 1.4 3.8 4.4V20z"/></svg>
         LinkedIn
       </a>
