@@ -100,6 +100,7 @@
     h2.hard { color: var(--hard); text-shadow: 0 0 8px var(--hard); }
     h2.insane { color: var(--insane); text-shadow: 0 0 8px var(--insane); }
 
+    /* --- CENTRADO DE LAS MÁQUINAS --- */
     ul {
       list-style: none;
       padding: 0;
@@ -107,22 +108,18 @@
     }
 
     li {
-      margin: 0.5rem 0;
-      font-size: 1.05rem;
-      text-align: center;
-      width: 100%;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-  }
+      justify-content: center;
+      text-align: center;
+      margin: 0.75rem 0;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
 
     li a {
+      display: inline-block;
       color: var(--accent);
       text-decoration: none;
       border-bottom: 1px dashed rgba(0,255,136,0.4);
