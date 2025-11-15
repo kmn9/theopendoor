@@ -111,10 +111,44 @@
       font-size: 1.05rem;
     }
 
+    /* ESTILOS POR CATEGORÍA PARA LOS ENLACES */
+    .machine-easy a { color: var(--easy); border-bottom: 1px dashed var(--easy); }
+    .machine-medium a { color: var(--medium); border-bottom: 1px dashed var(--medium); }
+    .machine-hard a { color: var(--hard); border-bottom: 1px dashed var(--hard); }
+    .machine-insane a { color: var(--insane); border-bottom: 1px dashed var(--insane); }
+
+    /* ESTILOS POR CATEGORÍA PARA ICONO ! */
+    .machine-easy .info-icon { color: var(--easy); }
+    .machine-medium .info-icon { color: var(--medium); }
+    .machine-hard .info-icon { color: var(--hard); }
+    .machine-insane .info-icon { color: var(--insane); }
+
+    /* Hover del icono según categoría */
+    .machine-easy .info-icon:hover { background-color: var(--easy); color: var(--bg-color); }
+    .machine-medium .info-icon:hover { background-color: var(--medium); color: var(--bg-color); }
+    .machine-hard .info-icon:hover { background-color: var(--hard); color: var(--bg-color); }
+    .machine-insane .info-icon:hover { background-color: var(--insane); color: var(--bg-color); }
+
+    /* ICONO RESTAURADO: fondo + borde original */
+    .info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      cursor: pointer;
+      margin-left: 6px;
+      position: relative;
+      transition: all 0.3s ease;
+
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid currentColor;
+    }
+
     li a {
-      color: var(--accent);
       text-decoration: none;
-      border-bottom: 1px dashed rgba(0,255,136,0.4);
       font-weight: 500;
       transition: color 0.3s, text-shadow 0.3s;
     }
@@ -124,29 +158,6 @@
       text-shadow: 0 0 10px var(--accent);
     }
 
-    /* Botón de información */
-    .info-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      font-size: 0.8rem;
-      cursor: pointer;
-      margin-left: 6px;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-
-    .info-icon:hover {
-      background-color: var(--accent);
-      color: var(--bg-color);
-    }
-
-    /* Tooltip */
     .tooltip {
       visibility: hidden;
       opacity: 0;
@@ -217,29 +228,11 @@
       text-shadow: 0 0 10px var(--accent);
     }
 
-    .footer-links svg {
-      width: 20px;
-      height: 20px;
-      fill: var(--accent);
-    }
-
     @media (max-width: 600px) {
-      section {
-        padding: 1rem;
-      }
-
-      h1.page-title {
-        font-size: 2rem;
-      }
-
-      p.intro {
-        font-size: 1rem;
-      }
-
-      .footer-links {
-        flex-direction: column;
-        gap: 1rem;
-      }
+      section { padding: 1rem; }
+      h1.page-title { font-size: 2rem; }
+      p.intro { font-size: 1rem; }
+      .footer-links { flex-direction: column; gap: 1rem; }
     }
   </style>
 </head>
@@ -255,46 +248,50 @@
   <section>
     <h2 class="easy">Easy Machines</h2>
     <ul>
-      <li>
+
+      <li class="machine-easy">
         <div class="machine-title">
-          <a href="https://kmn9.github.io/theopendoor/machine-squashed.html" target="_self">Machine Squashed</a>
+          <a href="https://kmn9.github.io/theopendoor/machine-squashed.html">Machine Squashed</a>
           <div class="info-icon">!
             <div class="tooltip">HTB - Linux | (OSCP)</div>
           </div>
         </div>
       </li>
-  
-      <li>
+
+      <li class="machine-easy">
         <div class="machine-title">
-          <a href="https://kmn9.github.io/theopendoor/machine-teacher.html" target="_self">Machine Teacher</a>
+          <a href="https://kmn9.github.io/theopendoor/machine-teacher.html">Machine Teacher</a>
           <div class="info-icon">!
             <div class="tooltip">HTB - Linux | (OSCP | eWPT | OSWE | eWPTX)</div>
           </div>
         </div>
       </li>
-  
-      <li>
+
+      <li class="machine-easy">
         <div class="machine-title">
-          <a href="https://kmn9.github.io/theopendoor/machine-trick.html" target="_self">Machine Trick</a>
+          <a href="https://kmn9.github.io/theopendoor/machine-trick.html">Machine Trick</a>
           <div class="info-icon">!
             <div class="tooltip">HTB - Linux | (OSCP | eWPT | OSWE | eWPTX)</div>
           </div>
         </div>
       </li>
+
     </ul>
   </section>
 
   <section>
     <h2 class="medium">Medium Machines</h2>
-        <ul>
-      <li>
+    <ul>
+
+      <li class="machine-medium">
         <div class="machine-title">
-          <a href="https://kmn9.github.io/theopendoor/machine-administrator.html" target="_self">Machine Administrator</a>
+          <a href="https://kmn9.github.io/theopendoor/machine-administrator.html">Machine Administrator</a>
           <div class="info-icon">!
-            <div class="tooltip">HTB - Linux | (OSCP)</div>
+            <div class="tooltip">HTB - Windows | (OSCP | OSEP | eCPPT | eCPTX | Active Directory)</div>
           </div>
         </div>
       </li>
+
     </ul>
   </section>
 
@@ -311,33 +308,22 @@
   <footer>
     <p>Connect with me 🌐</p>
     <div class="footer-links">
-      <a href="https://app.hackthebox.com/profile/2031207" target="_blank" rel="noopener" title="Hack The Box">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 7l9-5 9 5v10l-9 5-9-5V7zm9 10l6-3.3V8.7L12 5.4 6 8.7v4L12 17z"/></svg>
-        Hack The Box
-      </a>
-      <a href="https://www.linkedin.com/in/jaime-carmena-gómez-13622723a/" target="_blank" rel="noopener" title="LinkedIn">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14C2.2 0 0 2.2 0 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5V5c0-2.8-2.2-5-5-5zM7.1 20H4V9h3.1v11zM5.6 7.6c-1 0-1.7-.8-1.7-1.7 0-1 .8-1.7 1.7-1.7s1.7.8 1.7 1.7-.8 1.7-1.7 1.7zM20 20h-3.1v-5.6c0-1.3-.5-2.2-1.7-2.2s-2 .9-2 2.3V20h-3.1V9h3v1.5c.4-.6 1.4-1.5 3.1-1.5 2.2 0 3.8 1.4 3.8 4.4V20z"/></svg>
-        LinkedIn
-      </a>
+      <a href="https://app.hackthebox.com/profile/2031207" target="_blank">Hack The Box</a>
+      <a href="https://www.linkedin.com/in/jaime-carmena-gómez-13622723a/" target="_blank">LinkedIn</a>
     </div>
   </footer>
 
   <script>
-    // Hacer que el tooltip funcione también en móviles (por toque)
     document.querySelectorAll('.info-icon').forEach(icon => {
       icon.addEventListener('click', function (e) {
         e.stopPropagation();
-        // Cerrar otros tooltips abiertos
-        document.querySelectorAll('.info-icon.active').forEach(activeIcon => {
-          if (activeIcon !== icon) activeIcon.classList.remove('active');
+        document.querySelectorAll('.info-icon.active').forEach(active => {
+          if (active !== icon) active.classList.remove('active');
         });
-        // Alternar visibilidad del tooltip
         icon.classList.toggle('active');
       });
     });
-
-    // Cerrar tooltip al hacer click fuera
-    document.addEventListener('click', function () {
+    document.addEventListener('click', () => {
       document.querySelectorAll('.info-icon.active').forEach(icon => icon.classList.remove('active'));
     });
   </script>
